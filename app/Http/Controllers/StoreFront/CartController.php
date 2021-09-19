@@ -30,7 +30,8 @@ class CartController extends Controller
             'subtotal' => $this->cartRepo->getSubTotal(),
             'tax' => $this->cartRepo->getTax(),
             'shippingFee' => $shippingFee,
-            'total' => $this->cartRepo->getTotal(2, $shippingFee)
+            'total' => $this->cartRepo->getTotal(2, $shippingFee),
+            'cartCount' => $this->cartRepo->countItems()
         ]);
     }
 

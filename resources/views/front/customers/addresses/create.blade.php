@@ -6,31 +6,24 @@
         @include('layouts.errors-and-messages')
         <div class="box">
             <form action="{{ route('customer.address.store', $customer->id) }}" method="post" class="form" enctype="multipart/form-data">
-                <input type="hidden" name="status" value="1">
                 <div class="box-body">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="alias">Alias <span class="text-danger">*</span></label>
-                        <input type="text" name="alias" id="alias" placeholder="Home or Office" class="form-control" value="{{ old('alias') }}">
+                        <label for="address">Address<span class="text-danger">*</span></label>
+                        <input type="text" name="address" id="address" placeholder="Address" class="form-control" value="{{ old('address') }}">
                     </div>
                     <div class="form-group">
-                        <label for="address_1">Address 1 <span class="text-danger">*</span></label>
-                        <input type="text" name="address_1" id="address_1" placeholder="Address 1" class="form-control" value="{{ old('address_1') }}">
+                        <label for="city">City<span class="text-danger">*</span></label>
+                        <input type="text" name="city" id="city" placeholder="city" class="form-control" value="{{ old('city') }}">
                     </div>
-                    <div class="form-group">
-                        <label for="address_2">Address 2 </label>
-                        <input type="text" name="address_2" id="address_2" placeholder="Address 2" class="form-control" value="{{ old('address_2') }}">
-                    </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="country_id">Country </label>
                         <select name="country_id" id="country_id" class="form-control select2">
                             @foreach($countries as $country)
                                 <option @if(env('SHOP_COUNTRY_ID') == $country->id) selected="selected" @endif value="{{ $country->id }}">{{ $country->name }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div id="provinces" class="form-group" style="display: none;"></div>
-                    <div id="cities" class="form-group" style="display: none;"></div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="zip">Zip Code </label>
                         <input type="text" name="zip" id="zip" placeholder="Zip code" class="form-control" value="{{ old('zip') }}">

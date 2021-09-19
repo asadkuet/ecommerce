@@ -24,7 +24,7 @@
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                            <a href="{{ route('front.get.product', [$cartItem->product->slug]) }}" class="hover-border">
+                            <a href="{{ route('products.show', [$cartItem->product->id]) }}" class="hover-border">
                                 @if(isset($cartItem->cover))
                                     <img src="{{$cartItem->cover}}" alt="{{ $cartItem->name }}" class="img-responsive img-thumbnail">
                                 @else
