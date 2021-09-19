@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminPanel\RoleController;
+use App\Http\Controllers\AdminPanel\UserController;
+use App\Http\Controllers\AdminPanel\ProductController;
+use App\Http\Controllers\StoreFront\HomePageController;
+use App\Http\Controllers\StoreFront\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +20,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+Route::get('/', [HomePageController::class, 'index'])->name('home');
+Route::resource('cart', CartController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);

@@ -28,14 +28,16 @@
             <th>No</th>
             <th>Name</th>
             <th>Image</th>
+            <th>Price</th>
             <th>Details</th>
             <th width="280px">Action</th>
         </tr>
 	    @foreach ($products as $product)
 	    <tr>
-	        <td>{{ ++$i }}</td>
+	        <td>{{ $loop->iteration }}</td>
 	        <td>{{ $product->name }}</td>
 	        <td><img src="{{ $product->image }}" height="100px" width="100px"/></td>
+	        <td align="right">{{ $product->price }}</td>
 	        <td>{{ $product->description }}</td>
 	        <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
@@ -55,7 +57,4 @@
 	    </tr>
 	    @endforeach
     </table>
-
-
-    {!! $products->links() !!}
 @endsection
